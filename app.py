@@ -2,45 +2,6 @@ import streamlit as st
 from flask import Flask, request, jsonify
 from qa_chain import qa_chain  # Import the qa_chain function
 
-# app = Flask(__name__)
-
-# @app.route("/v1/chat", methods=["POST"])
-# def chat():
-#     try:
-#         data = request.json
-#         user_prompt = data.get("instructions", "").strip()
-
-#         if not user_prompt:
-#             return jsonify({"error": "No instructions provided"}), 400
-
-#         # Call the QA chain with the user prompt
-#         response = qa_chain(user_prompt)
-
-#         # Check if source documents are included or not
-#         if "source_documents" in response:
-#             return jsonify({
-#                 "response": {
-#                     "name": "Assistant",
-#                     "content": response["result"],
-#                     "sources": response["source_documents"]
-#                 }
-#             })
-#         else:
-#             return jsonify({
-#                 "response": {
-#                     "name": "Assistant",
-#                     "content": response["result"]
-#                 }
-#             })
-
-#     except Exception as e:
-#         # Log the exception details to help debug
-#         app.logger.error(f"Error occurred: {e}")
-#         return jsonify({"error": str(e)}), 500
-
-
-
-
 st.set_page_config(page_title="RAG Chat Assistant 🤖", page_icon="💬")
 
 # App title
@@ -80,10 +41,4 @@ for role, message in st.session_state.chat_history:
     else:
         st.markdown(f"**🤖 Assistant:** {message}")
 
-
-
-
-
-# if __name__ == "__main__":
-#     app.run(debug=True, port=5000)
 
